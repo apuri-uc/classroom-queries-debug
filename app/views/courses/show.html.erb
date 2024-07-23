@@ -18,27 +18,27 @@
 
 <form action="/modify_course/<%= @the_course.id %>" method="post">
   <div>
-    <label for="title_box">
+    <label for="query_title">
       Title
     </label>
 
-    <input id="title_box" type="text" name="query_title" value="<%= @the_course.title %>">
+    <input id="query_title" type="text" name="query_title" value="<%= @the_course.title %>">
   </div>
 
   <div>
-    <label for="term_offered_box">
+    <label for="query_term_offered">
       Term offered
     </label>
 
-    <input id="term_offered_box" type="text" name="query_term_offered" value="<%= @the_course.term_offered %>">
+    <input id="query_term_offered" type="text" name="query_term_offered" value="<%= @the_course.term_offered %>">
   </div>
 
   <div>
-    <label for="department_id_box">
+    <label for="query_path_id">
       Department
     </label>
 
-    <select id="department_id_box" name="query_department_id">
+    <select id="query_path_id" name="query_path_id">
       <% Department.order({ :name => :asc }).each do |a_department| %>
         <% if a_department.id == @the_course.department_id %>
           <option value="<%= a_department.id %>" selected>
@@ -79,7 +79,7 @@
     Department
   </dt>
   <dd>
-    <% department = Department.where({ :id => @the_course.department_id }).at(0) %>
+    <% department = Department.where({ :department_id => @department.id }).at(0) %>
     <a href="/departments/<%= department.id %>"><%= department.name %></a>
   </dd>
 

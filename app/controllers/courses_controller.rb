@@ -1,11 +1,10 @@
 class CoursesController < ApplicationController
   def update
-    id = params.fetch("path_id")
-    matching_records = Course.where({ :id => the_id }).at(0)
+    id = params.fetch("id")
+    matching_records = Course.where({ :id => id }).at(0)
     the_course = matching_records.at(0)
     the_course.title = params.fetch("query_title")
     the_course.term_offered = params.fetch("query_term_offered")
-    the_course.course_id = params.fetch("query_path_id")
 
     if the_course.valid?
       the_course.save
@@ -19,7 +18,6 @@ class CoursesController < ApplicationController
     c = Course.new
     c.title = params.fetch("query_title")
     c.term_offered = params.fetch("query_term_offered")
-    c.course_id = params.fetch("query_path_id")
 
     if c.valid?
       c.save
