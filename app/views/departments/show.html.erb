@@ -1,5 +1,5 @@
 <h1>
-  Department #<%= @department.id %> details
+  Department #<%= @the_department.id %> details
 </h1>
 
 <div>
@@ -9,42 +9,42 @@
 </div>
 
 <div>
-  <a href="/delete_department/<%= @department.id %>">
+  <a href="/delete_department/<%= @the_department.id %>">
     Delete department
   </a>
 </div>
 
 <hr>
-
-<form action="/modify_department/<%= @department.id %>" method="post">
+<form action="/modify_department/<%= @the_department.id %>" method="post">
   <div>
     <label for="name_box">
       Name
     </label>
 
-    <input type="text" id="name_box" name="query_name" value="<%= @department.name %>">
+    <input id="name_box" type="text" name="query_name" value="<%= @the_department.name %>">
   </div>
 
   <button>
     Update department
   </button>
 </form>
-
-<hr>
+</hr>
 
 <dl>
   <dt>
     Name
   </dt>
   <dd>
-    <%= @department.name %>
+    <%= @the_department.name %>
   </dd>
 
   <dt>
     Number of courses
   </dt>
   <dd>
-    <%= Course.where({ :department_id => @department.id }).count %>
+ 
+    <%= Course.where({ :department_id => @the_department.id }).count %>
+
   </dd>
 
 </dl>
@@ -52,7 +52,7 @@
 <hr>
 
 <h2>Courses</h2>
-<% courses = Course.where({ :department_id => @department.name }) %>
+<% courses = Course.where({ :department_id => @the_department.id }) %>
 <ul>
   <% courses.each do |course| %>
     <li>
