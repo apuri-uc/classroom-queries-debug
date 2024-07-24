@@ -1,13 +1,12 @@
 class CoursesController < ApplicationController
   def update
     id = params.fetch("id")
-    matching_records = Course.where({ :id => id }).at(0)
-    the_course = matching_records.at(0)
-    the_course.title = params.fetch("query_title")
-    the_course.term_offered = params.fetch("query_term_offered")
+    @the_course = Course.where({ :id => id }).at(0)
+    @the_course.title = params.fetch("query_title")
+    @the_course.term_offered = params.fetch("query_term_offered")
 
-    if the_course.valid?
-      the_course.save
+    if @the_course.valid?
+      @the_course.save
       redirect_to("/courses/#{@the_course.id}", { :notice => "Course updated successfully."} )
     else
       redirect_to("/courses/#{@the_course.id}", { :alert => "Course failed to update successfully." })

@@ -79,8 +79,7 @@
     Department
   </dt>
   <dd>
-    <% department = Department.where({ :department_id => @department.id }).at(0) %>
-    <a href="/departments/<%= department.id %>"><%= department.name %></a>
+    <% department = Department.where({ :id => @the_course.department_id }).at(0) %>
   </dd>
 
   <dt>
